@@ -1,0 +1,400 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	setlocale(0, "");
+	
+	//Переменные
+	string clrscr = "\x1b[1;1H\x1b[2J\x1b[3J";		//Очистка экрана
+	string P = "[\x1b[38;5;214m+\x1b[0m]";			//[+]
+	string fOne = "[\x1b[38;5;214m1\x1b[0m]";		//[1]
+	string fTwo = "[\x1b[38;5;214m2\x1b[0m]";		//[2]
+	string fThree = "[\x1b[38;5;214m3\x1b[0m]";		//[3]
+	string fFour = "[\x1b[38;5;214m4\x1b[0m]";		//[4]
+	string lA = "[A]"; 	string lB = "[B]"; string lC = "[C]"; string lD = "[D]"; //[A], [B], [C], [D]
+	string dC = "\x1b[0m";							//Обычный цвет текста
+	string fC = "\x1b[38;5;214m";					//Оранжевый цвет текста
+	string username = "User";						//Имя игрока
+	string qC = "\x1b[0m";							//Цвет вопросов
+	string aC = "\x1b[0m";							//Цвет ответов
+	char answer;									//Ответ
+	int exit_menu = 0;								//Выход в главное меню
+	int start_menu;									//Выбор меню при начале игры
+	int select_menu = 1;							//Выбор меню
+	int settings_menu;								//Выбор меню настроек
+	int color_menu;									//Выбор меню цветов
+	int num_quest;									//Выбор количества вопросов
+	int col_select;									//Выбор цвета
+	int number_of_questions = 10;					//Количество вопросов
+	int lives = 3;									//Количество жизней
+	int score = 0;									//Счёт
+	
+	while (select_menu > 0 and select_menu < 4) {
+		cout << "Приветствуем Вас на нашей викторине!\n" << endl;
+		cout << "[\x1b[38;5;214mМеню\x1b[0m]\n\n" << fOne << " \x1b[38;5;33m-\x1b[0m Начать игру\n" <<
+			fTwo << " \x1b[38;5;33m-\x1b[0m Настройки\n" << fThree << " \x1b[38;5;33m-\x1b[0m Правила\n" <<
+			fFour << " \x1b[38;5;33m-\x1b[0m Выйти\n\n" << "\x1b[38;5;214m>>\x1b[0m ";
+
+		cin >> select_menu;
+		if (select_menu == 1) { //Начало игры
+			cout << clrscr << "[\x1b[38;5;214mНачало игры\x1b[0m]\n\n"
+				<< "Имя игрока: " << fC << username << dC << endl
+				<< "Количество вопросов: " << fC << number_of_questions << dC << endl << endl
+				<< fOne << "Старт\n" << fTwo << "Главное меню\n\n" << "\x1b[38;5;214m>>\x1b[0m ";
+			cin >> start_menu;
+				if (start_menu == 1) { //Старт игры
+					cout << clrscr << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[1]Вопрос: Системный язык программирования?\n\n" << aC // Первый вопрос
+						<< lA << "Python\t\t" << lB << "C#\n"
+						<< lC << "Ruby\t\t\t" << lD << "C++\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // D = 68
+					if (answer == 68) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[2]Вопрос: Исполняемые в текущий момент компьютерные программы размещаются в: \n\n" << aC // Второй вопрос
+						<< lA << "Оперативной памяти\t\t" << lB << "Процессоре\n"
+						<< lC << "Внешней памяти\t\t" << lD << "Голове\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // A = 65
+					if (answer == 65) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[3]Вопрос: Что такое машинное обучение?\n\n" << aC // Третий вопрос
+						<< lA << "Наладка станка на заводе\t\t" << lB << "Обучение компьютерных систем\n"
+						<< lC << "Прошивка автомобиля\t\t\t" << lD << "Учёба на удалёнке\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // B = 66
+					if (answer == 66) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						cout << clrscr << "\x1b[38;5;214mВы проиграли!\n\n" << dC << "Ваш счёт: \x1b[38;5;214m" << score << dC << "\n\nНе расстраивайтесь, попробуйте снова!\n\n";
+						return 0;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[4]Вопрос: Как называется процесс преобразования текста в речь?\n\n" << aC // Четвёртый вопрос
+						<< lA << "Тикток\t\t\t" << lB << "Стивен Хокинг\n"
+						<< lC << "Синтез речи\t\t\t" << lD << "Речь Посполитая\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // C = 67
+					if (answer == 67) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[5]Вопрос: Что такое IP-адрес?\n\n" << aC // Пятый вопрос
+						<< lA << "Почтовый адрес\t\t\t" << lB << "Адрес устройства в сети\n"
+						<< lC << "Номер телефона\t\t\t" << lD << "Номер на плате компьютера\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // B = 66
+					if (answer == 66) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[6]Вопрос: Какого типа данных не существует?\n\n" << aC // Шестой вопрос
+						<< lA << "Числового\t\t\t" << lB << "Речевого\n"
+						<< lC << "Строкового\t\t\t" << lD << "Логического\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // B = 66
+					if (answer == 66) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[7]Вопрос: Что такое константа?\n\n" << aC // Седьмой вопрос
+						<< lA << "Постоянная величина\t\t" << lB << "Магазин чая\n"
+						<< lC << "Женское имя\t\t\t" << lD << "Новый тип вооружения\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // A = 65
+					if (answer == 65) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[8]Вопрос: Каких не бывает типов операторов?\n\n" << aC // Восьмой вопрос
+						<< lA << "Унарных\t\t\t" << lB << "Тернарных\n"
+						<< lC << "Пекарных\t\t\t" << lD << "Бинарных\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // C = 67
+					if (answer == 67) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					if (number_of_questions == 8) {
+						cout << clrscr << "\x1b[38;5;214mПОБЕДА! ПОЗДРАВЛЯЕМ!\n\n" << dC << "Вы набрали: \x1b[38;5;214m" << score << dC << " баллов!\n" << "Оставшиеся жизни: " << fC << lives << dC << endl << endl;
+						return 0;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[9]Вопрос: Что такое разрешение монитора?\n\n" << aC // Девятый вопрос
+						<< lA << "Противоположное запрещению монитора\t\t" << lB << "Количество пикслей по вертикали и горизонтали\n"
+						<< lC << "Разница между темным и светлым\t\t" << lD << "Возможность вывести картинку на монитор\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // B = 66
+					if (answer == 66) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[10]Вопрос: Что такое BIOS?\n\n" << aC // Десятый вопрос
+						<< lA << "Базовая система ввода-вывода\t\t" << lB << "Синий экран смерти\n"
+						<< lC << "Базовая служба установки\t\t" << lD << "Двойная операционная система\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // A = 65
+					if (answer == 65) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					if (number_of_questions == 10) {
+						cout << clrscr << "\x1b[38;5;214mПОБЕДА! ПОЗДРАВЛЯЕМ!\n\n" << dC << "Вы набрали: \x1b[38;5;214m" << score << dC << " баллов!\n" << "Оставшиеся жизни: " << fC << lives << dC << endl << endl;
+						return 0;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[11]Вопрос: Что такое материнская плата?\n\n" << aC // Одинадцатый вопрос
+						<< lA << "Пособие для ухода за детьми\t\t" << lB << "Интерстеллар\n"
+						<< lC << "Налог на рождение детей\t\t\t" << lD << "Основа ЭВМ\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // D = 68
+					if (answer == 68) {
+						cout << clrscr << "\x1b[38;5;77mВы ответили правильно!\n\n" << dC;
+						score += 54;
+					}
+					else {
+						cout << clrscr << "\x1b[38;5;9mВы ответили неправильно!\n\n" << dC;
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					cout << "Игрок: " << username << " | жизни: " << lives << " | очки: " << score << endl;
+					cout << qC << "[12]Вопрос: Умер ли Райан Гослинг в конце Драйва?\n\n" << aC // Двенадцатый вопрос
+						<< lA << "Однозначно\t\t" << lB << "Да\n"
+						<< lC << "Без сомнений\t\t\t" << lD << "Да не умер он в конце Драйва\n\n"
+						<< dC << "[" << aC << "+" << dC << "]" << "Выберите ответ: " << aC;
+					cin >> answer; // D = 68
+					if (answer == 68) {
+						score += 54;
+					}
+					else {
+						lives -= 1;
+					}
+					if (lives == 0) {
+						break;
+					}
+					cout << clrscr << "\x1b[38;5;214mПОБЕДА! ПОЗДРАВЛЯЕМ!\n\n" << dC << "Вы набрали: \x1b[38;5;214m" << score << dC << " баллов!\n" << "Оставшиеся жизни: " << fC << lives << dC << endl << endl;
+					return 0;
+
+				}
+			
+				else if (start_menu == 2) { //Выход в главное меню
+					cout << clrscr;
+				}
+				else {
+					cout << "Ошибка";
+					return 0;
+				}
+		}
+		else if (select_menu == 2) { //Настройки
+			cout << clrscr << "[\x1b[38;5;214mНастройки\x1b[0m]\n\n"
+				<< fOne << "\x1b[38;5;33m-\x1b[0m Изменить имя игрока\n"
+				<< fTwo << "\x1b[38;5;33m-\x1b[0m Изменить количество вопросов\n"
+				<< fThree << "\x1b[38;5;33m-\x1b[0m Настройки интерфейса\n\n"
+				<< fFour << "Главное меню\n\n" << "\x1b[38;5;214m>>\x1b[0m ";
+			cin >> settings_menu;
+			if (settings_menu == 1) {
+				cout << clrscr << "Текущее имя игрока: \x1b[38;5;214m" << username << "\x1b[0m\n\n"
+					<< "Введите новое имя игрока\n\n" << "\x1b[38;5;214m>>\x1b[0m ";
+				cin >> username;
+			}
+			else if (settings_menu == 2) {
+				cout << clrscr << "Изменение количества вопросов: \n\n"
+					<< fOne << "8\n" << fTwo << "10\n" << fThree << "12\n\n"
+					<< "\x1b[38;5;214m>>\x1b[0m ";
+				cin >> num_quest;
+				if (num_quest == 1) {
+					number_of_questions = 8;
+				}
+				else if (num_quest == 2) {
+					number_of_questions = 10;
+				}
+				else if (num_quest == 3) {
+					number_of_questions = 12;
+				}
+				else {
+					cout << "Ошибка";
+				}
+			}
+			else if (settings_menu == 3) { 
+				cout << clrscr << "Редактирование интерфейса: \n\n"
+					<< fOne << "Цвет вопросов\n" << fTwo << "Цвет ответов\n\n"
+					<< "\x1b[38;5;214m>>\x1b[0m ";
+				cin >> color_menu;
+				if (color_menu == 1) {
+					cout << clrscr << "[1]\x1b[0mОбычный\n" << dC << "[2]\x1b[38;5;227mЖёлтый\n" << dC
+						<< "[3]\x1b[38;5;21mСиний\n" << dC << "[4]\x1b[38;5;198mРозовый\n" << dC
+						<< "[5]\x1b[38;5;127mФиолетовый\n" << dC << "[6]\x1b[38;5;214mОранжевый\n" << dC
+						<< "[7]\x1b[38;5;10mЗелёный\n" << dC << "[8]\x1b[38;5;9mКрасный\n\n" << dC
+						<< "[0]Главное меню\n\n" << "\x1b[38;5;214m>>" << dC;
+					if (cin >> col_select) {
+						switch (col_select) {
+						case 1:
+							qC = "\x1b[0m";
+							break;
+						case 2:
+							qC = "\x1b[38;5;227m";
+							break;
+						case 3:
+							qC = "\x1b[38;5;21m";
+							break;
+						case 4:
+							qC = "\x1b[38;5;198m";
+							break;
+						case 5:
+							qC = "\x1b[38;5;127m";
+							break;
+						case 6:
+							qC = "\x1b[38;5;214m";
+							break;
+						case 7:
+							qC = "\x1b[38;5;10m";
+							break;
+						case 8:
+							qC = "\x1b[38;5;9m";
+							break;
+						}
+					}
+					else {
+						cout << clrscr << "\n\nОшибка\n\n";
+						return 0;
+					}
+				}
+				else if (color_menu == 2) {
+					cout << clrscr << "[1]\x1b[0mОбычный\n" << dC << "[2]\x1b[38;5;227mЖёлтый\n" << dC
+						<< "[3]\x1b[38;5;21mСиний\n" << dC << "[4]\x1b[38;5;198mРозовый\n" << dC
+						<< "[5]\x1b[38;5;127mФиолетовый\n" << dC << "[6]\x1b[38;5;214mОранжевый\n" << dC
+						<< "[7]\x1b[38;5;10mЗелёный\n" << dC << "[8]\x1b[38;5;9mКрасный\n\n" << dC
+						<< "[0]Главное меню\n\n" << "\x1b[38;5;214m>>" << dC;
+					if (cin >> col_select) {
+						switch (col_select) {
+						case 1:
+							aC = "\x1b[0m";
+							break;
+						case 2:
+							aC = "\x1b[38;5;227m";
+							break;
+						case 3:
+							aC = "\x1b[38;5;21m";
+							break;
+						case 4:
+							aC = "\x1b[38;5;198m";
+							break;
+						case 5:
+							aC = "\x1b[38;5;127m";
+							break;
+						case 6:
+							aC = "\x1b[38;5;214m";
+							break;
+						case 7:
+							aC = "\x1b[38;5;10m";
+							break;
+						case 8:
+							aC = "\x1b[38;5;9m";
+							break;
+						}
+					}
+					else {
+						cout << clrscr << "\n\nОшибка\n\n";
+						return 0;
+					}
+				}
+
+			}
+			cout << clrscr;
+		}
+		else if (select_menu == 3) { //Правила
+			cout << clrscr << "[\x1b[38;5;214mПравила\x1b[0m]\n\n"
+				<< "\x1b[38;5;33m-\x1b[0m Игрок получает очки за правильный ответ на вопрос\n"
+				<< "\x1b[38;5;33m-\x1b[0m Игрок проходит дальше за правильный ответ\n"
+				<< "\x1b[38;5;33m-\x1b[0m Игрок теряет жизнь при неправильном ответе\n\n"
+				<< "[*]Главное меню\n\n" << "\x1b[38;5;214m>>\x1b[0m ";
+			cin >> exit_menu;
+		}
+	}
+	if (select_menu == 4) {
+		return 0;
+	}
+	else {
+		cout << "Ошибка";
+	}
+
+
+
+	return 0;
+}
