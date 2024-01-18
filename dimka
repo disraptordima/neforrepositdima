@@ -274,7 +274,7 @@ int main() {
 				cin >> username;
 			}
 			else if (settings_menu == 2) {
-				cout << clrscr << "Изменение количества вопросов: \n\n"
+				cout << clrscr << "Изменание количества вопросов: \n\n"
 					<< fOne << "8\n" << fTwo << "10\n" << fThree << "12\n\n"
 					<< "\x1b[38;5;214m>>\x1b[0m ";
 				cin >> num_quest;
