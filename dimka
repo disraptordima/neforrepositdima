@@ -13,7 +13,7 @@ int main() {
 	string fFour = "[\x1b[38;5;214m4\x1b[0m]";		//[4]
 	string lA = "[A]"; 	string lB = "[B]"; string lC = "[C]"; string lD = "[D]"; //[A], [B], [C], [D]
 	string dC = "\x1b[0m";							//Обычный цвет текста
-	string fC = "\x1b[38;5;214m";					//Оранжевый цвет текста
+	string fC = "\x1b[38;5;214m";						//Оранжевый цвет текста
 	string username = "User";						//Имя игрока
 	string qC = "\x1b[0m";							//Цвет вопросов
 	string aC = "\x1b[0m";							//Цвет ответов
