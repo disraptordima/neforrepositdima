@@ -257,7 +257,7 @@ int main() {
 					cout << clrscr;
 				}
 				else {
-					cout << "Ошибка";
+					cout << "Тотальная ошибка";
 					return 0;
 				}
 		}
