@@ -5,7 +5,7 @@ int main() {
 	setlocale(0, "");
 	
 	//Переменные
-	string clrscr = "\x1b[1;1H\x1b[2J\x1b[3J";		//Очистка экрана
+	string clrscr = "\x1b[1;1H\x1b[2J\x1b[3J";		//Зачистка экрана
 	string P = "[\x1b[38;5;214m+\x1b[0m]";			//[+]
 	string fOne = "[\x1b[38;5;214m1\x1b[0m]";		//[1]
 	string fTwo = "[\x1b[38;5;214m2\x1b[0m]";		//[2]
